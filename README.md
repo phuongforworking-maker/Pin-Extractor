@@ -1,69 +1,36 @@
-🧩 Pin Extractor (Poem Cryptography Challenge)
+"""
+# 🧩 Pin Extractor (Poem Cryptography Challenge)
 
-Project Description
+## Project Description
 
-This repository contains a solution to the "Pin Extractor" coding challenge. The core of the project is a single Python function, pin_extractor, designed to decode a secret numerical PIN hidden within a collection of poems or multi-line strings.
+This Python script contains the complete solution to the "Pin Extractor" coding challenge. 
+The core of the project is a single function, `pin_extractor`, designed to decode a secret 
+numerical PIN hidden within a collection of poems or multi-line strings.
 
-The project demonstrates key Python concepts, including:
+The function iterates through multiple poems, processes each one line-by-line, and 
+extracts a digit based on the length of a specific word in that line.
 
-Function definition and iteration over input lists.
+## The Decoding Logic
 
-String manipulation (.split() with custom delimiters like \n).
+The secret PIN digit for the $n$-th line of a poem is determined by the length of the $n$-th 
+word in that line, following these rules:
 
-List iteration using enumerate to access both index and value simultaneously.
+1. **Line Index (n):** Used as the index to select the word.
+2. **Word Index:** The $n$-th word in the line is selected (e.g., line_index 0 uses words[0]).
+3. **Digit Value:**
+    * If the length of the $n$-th word is **greater than** the line index ($n$), the digit is the **word's length**.
+    * Otherwise (if the word is too short or the length is <= $n$), the digit is **'0'**.
 
-Conditional logic to prevent IndexError and apply the decoding rules.
+The function returns a list of strings, where each string is the extracted secret code for one poem.
 
-The Decoding Logic
+## Usage Example
 
-The secret PIN digit for the $n$-th line of a poem is determined by the length of the $n$-th word in that line, following these rules:
+The execution section at the bottom of this file demonstrates how to call the function 
+with a list of sample poems and prints the resulting secret codes.
 
-Line Index: The line number ($n$, starting from 0) is used as the index.
+To run this file:
+```bash
+python documentation.py
+```
 
-Word Index: The $n$-th word in the line is selected.
-
-Digit Value:
-
-If the length of the $n$-th word is greater than the line index ($n$), the digit is the word's length.
-
-Otherwise (if the word's length is less than or equal to the line index, or if the word does not exist), the digit is '0'.
-
-The function collects these digits for every line of every poem, compiling a list of secret codes.
-
-Usage
-
-The pin_extractor function accepts a single argument: a list of strings (poems).
-
-Prerequisites
-
-You only need a Python interpreter (Python 3.x recommended) to run the script.
-
-Running the Code
-
-Save the provided code as pin_extractor.py.
-
-Execute the file from your terminal:
-
-python pin_extractor.py
-
-
-Example Input and Output
-
-The provided script uses the following three example poems:
-
-Input:
-
-poems = [
-    """Stars and the moon\nshine in the sky\nwhite and bright\nuntil the end of the night""",
-    'The grass is green\nwhere and there\nhoping for rain\nbefore it turns yellow',
-    'There\nonce\nwas\na\ndragon'
-]
-
-
-The script will output the list of extracted secret codes based on the decoding rules.
-
-File Structure
-
-The entire solution is contained in a single file:
-
-pin_extractor.py: Contains the completed pin_extractor(poems) function and example usage.
+"""
