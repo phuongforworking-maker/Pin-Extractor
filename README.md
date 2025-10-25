@@ -27,9 +27,5 @@ The function returns a list of strings, where each string is the extracted secre
 The execution section at the bottom of this file demonstrates how to call the function 
 with a list of sample poems and prints the resulting secret codes.
 
-To run this file:
-```bash
-python documentation.py
-```
 
-"""
+
