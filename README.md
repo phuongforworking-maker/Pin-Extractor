@@ -1,4 +1,3 @@
-"""
 # 🧩 Pin Extractor (Poem Cryptography Challenge)
 
 ## Project Description
